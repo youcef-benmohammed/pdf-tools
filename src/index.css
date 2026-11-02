@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Manrope Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Palette: paper white, mist grey, ink, ink violet */
+  --color-paper: #ffffff;
+  --color-mist: #f3f4f7;
+  --color-line: #e3e5ec;
+  --color-ink: #16182b;
+  --color-muted: #5d6278;
+  --color-brand-50: #f2efff;
+  --color-brand-100: #e4ddfe;
+  --color-brand-200: #cbbffc;
+  --color-brand-500: #6d52ec;
+  --color-brand-600: #5b3fd9;
+  --color-brand-700: #4a30b8;
+  --color-ok: #0e8a5f;
+  --color-danger: #c2362b;
+
+  /* Tool category hues */
+  --color-cat-organize: #5b3fd9;
+  --color-cat-sign: #0f7a8c;
+  --color-cat-convert: #b4570e;
+  --color-cat-optimize: #2b6fd6;
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-paper: #171a26;
+  --color-mist: #10121b;
+  --color-line: #2a2e40;
+  --color-ink: #eceef6;
+  --color-muted: #9aa0b8;
+  --color-brand-50: #221c45;
+  --color-brand-100: #2c2459;
+  --color-brand-200: #3e3480;
+  --color-brand-500: #9a86ff;
+  --color-brand-600: #8a73ff;
+  --color-brand-700: #b3a5ff;
+}
+
+html,
+body {
+  background: var(--color-mist);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Sheet of paper with a folded corner: the signature element of the drop zone */
+.sheet {
+  --fold: 28px;
+  clip-path: polygon(0 0, calc(100% - var(--fold)) 0, 100% var(--fold), 100% 100%, 0 100%);
+}
+.sheet-fold {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(225deg, transparent 50%, var(--color-brand-200) 50%);
+}
+
+.checker {
+  background-image: linear-gradient(45deg, var(--color-line) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--color-line) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-line) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--color-line) 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+}

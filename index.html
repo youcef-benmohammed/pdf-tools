@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Merge, split, sign and edit your PDFs right in your browser. No file is ever uploaded to a server." />
+    <meta name="theme-color" content="#5b3fd9" />
+    <title>PDF Tools</title>
+    <script>
+      // Apply theme and language before the first render (avoids a flash).
+      try {
+        var t = localStorage.getItem('pdf-tools-theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+        var l = localStorage.getItem('pdf-tools-lang');
+        if (l === 'fr' || (!l && /^fr/i.test(navigator.language || ''))) document.documentElement.lang = 'fr';
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>PDF Tools requires JavaScript: all processing happens in your browser. / PDF Tools nécessite JavaScript : tout est traité dans votre navigateur.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
